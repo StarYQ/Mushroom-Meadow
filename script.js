@@ -62,6 +62,7 @@ function initGame() {
   // Render the board in the HTML grid element
   renderBoard();
 
+  // Initialize timer and flag counter
   timer = 0;
   clearInterval(timerInterval);
   document.getElementById('timer').innerText = '0s';
@@ -69,6 +70,8 @@ function initGame() {
     timer++;
     document.getElementById('timer').innerText = timer + 's';
   }, 1000);
+
+  updateFlagCounter();
 }
 
 // Count adjacent mines (toxic mushrooms) for a given cell
@@ -144,6 +147,7 @@ function handleRightClick(e) {
   // Toggle flagged state
   cell.flagged = !cell.flagged;
   updateCellUI(row, col);
+  updateFlagCounter(); // Update our flag counter display
 }
 
 // Reveal a cell and update game state
@@ -215,6 +219,19 @@ function updateCellUI(row, col) {
       break;
     }
   }
+}
+
+// Calculate and update the flag counter display
+function updateFlagCounter() {
+  let flagCount = 0;
+  // Count how many cells are flagged
+  board.forEach(row => {
+    row.forEach(cell => {
+      if (cell.flagged) flagCount++;
+    });
+  });
+  let flagsRemaining = mineCount - flagCount;
+  document.getElementById('flag-counter').innerText = `Flags remaining: ${flagsRemaining}`;
 }
 
 // Reveal all toxic mushrooms when game ends (win or lose)

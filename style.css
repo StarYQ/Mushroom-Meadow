@@ -57,11 +57,11 @@ body {
     cursor: default;
     animation: reveal 0.3s ease-out;
   }
-
+  
   .cell:hover {
     transform: scale(1.05);
   }
-
+  
   @keyframes reveal {
     0% { transform: scale(0.8); opacity: 0.5; }
     100% { transform: scale(1); opacity: 1; }
@@ -85,6 +85,14 @@ body {
   #message {
     margin-top: 1rem;
     font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  /* Timer and flag counter styling */
+  #flag-counter,
+  #timer {
+    margin-top: 0.5rem;
+    font-size: 1rem;
     font-weight: bold;
   }
   
