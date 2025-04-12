@@ -7,6 +7,7 @@ body {
     text-align: center;
   }
   
+  /* Header styling */
   header {
     background-color: #a3d5a3; /* Gentle, nature-inspired green */
     padding: 1rem;
@@ -20,19 +21,80 @@ body {
     font-size: 2em;
   }
   
+  /* Scoreboard container */
+  #scoreboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #96d096;  /* Slightly darker green bar */
+    padding: 0.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  /* Score section styling */
+  .score-section {
+    display: flex;
+    align-items: center;
+    background-color: #eff7e9;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-weight: bold;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  }
+  
+  /* Icon style in score sections */
+  .score-icon {
+    margin-right: 0.4rem;
+  }
+  
+  /* Label styling for selects */
+  .select-label {
+    margin-right: 0.3rem;
+  }
+  
+  /* Restart button styling */
+  .score-button {
+    background-color: #ffe0b2;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.3rem 0.6rem;
+  }
+  .score-button:hover {
+    background-color: #ffd180;
+  }
+  
+  /* Message styling (for win/lose) */
+  #message {
+    font-weight: bold;
+    margin-left: 1rem;
+    color: #2e5627; /* greenish text */
+  }
+  
+  /* Instructions styling */
+  #instructions {
+    margin: 1rem auto;
+    max-width: 400px;
+    text-align: left;
+    line-height: 1.5;
+    color: #333;
+  }
+  
   /* Game container styling */
   #game {
-    max-width: 400px;
+    max-width: 500px;
     margin: 1rem auto;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   
-  /* Grid styling: using CSS Grid to create the board */
+  /* Grid styling using CSS Grid */
   #grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr); /* 6 columns */
     gap: 2px;
     background-color: #556b2f;  /* Dark olive green border between cells */
     padding: 2px;
@@ -40,7 +102,7 @@ body {
   
   /* Styling individual cells */
   .cell {
-    background-color: #c8e6c9;  /* Light green for safe, covered cells */
+    background-color: #c8e6c9;  /* Light green for covered cells */
     width: 50px;
     height: 50px;
     display: flex;
@@ -51,17 +113,19 @@ body {
     transition: background-color 0.3s, transform 0.2s;
   }
   
-  /* Revealed cells lose the background color and pointer indicates disabled click */
+  /* Hover effect on cells */
+  .cell:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Revealed cells */
   .cell.revealed {
     background-color: #fff;
     cursor: default;
     animation: reveal 0.3s ease-out;
   }
   
-  .cell:hover {
-    transform: scale(1.05);
-  }
-  
+  /* Reveal animation */
   @keyframes reveal {
     0% { transform: scale(0.8); opacity: 0.5; }
     100% { transform: scale(1); opacity: 1; }
@@ -72,27 +136,12 @@ body {
     background-color: #ffeb3b; /* Yellow for flagged cells */
   }
   
-  /* Styling for game information section */
-  #game-info {
-    margin-top: 1rem;
+  /* Status message color adjustments */
+  .lost {
+    color: #c62828;  /* red tone */
   }
   
-  #reset {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-  }
-  
-  #message {
-    margin-top: 1rem;
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-  
-  /* Timer and flag counter styling */
-  #flag-counter,
-  #timer {
-    margin-top: 0.5rem;
-    font-size: 1rem;
-    font-weight: bold;
+  .won {
+    color: #2e7d32;  /* dark green for victory */
   }
   

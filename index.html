@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mushroom Meadow</title>
-  <!-- Link to the stylesheet -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,9 +11,55 @@
     <h1>Mushroom Meadow</h1>
     <p>Collect safe mushrooms and avoid toxic toadstools!</p>
   </header>
+  
+  <!-- Scoreboard container (Google Minesweeper–style) -->
+  <div id="scoreboard">
+    <!-- Difficulty dropdown -->
+    <div id="difficulty-section" class="score-section">
+      <span class="score-icon">🎚</span>
+      <label for="difficulty-select" class="select-label">Difficulty:</label>
+      <select id="difficulty-select">
+        <option value="easy">Easy</option>
+        <option value="medium" selected>Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+    </div>
+    
+    <!-- Grid size dropdown -->
+    <div id="grid-size-section" class="score-section">
+      <span class="score-icon">🔲</span>
+      <label for="grid-size-select" class="select-label">Grid Size:</label>
+      <select id="grid-size-select">
+        <option value="6" selected>6x6</option>
+        <option value="8">8x8</option>
+        <option value="10">10x10</option>
+      </select>
+    </div>
+    
+    <!-- Flag counter -->
+    <div class="score-section">
+      <span class="score-icon">🚩</span>
+      <span id="flag-counter">0</span>
+    </div>
+
+    <!-- Timer -->
+    <div class="score-section">
+      <span class="score-icon">⏱</span>
+      <span id="timer">0s</span>
+    </div>
+
+    <!-- Restart button -->
+    <button id="reset" class="score-button">🔄</button>
+
+    <!-- Message field for game status -->
+    <div id="message"></div>
+  </div>
+
+  <!-- Simple instructions under the scoreboard -->
   <div id="instructions">
-    <p>Left-click to reveal a cell. Right-click to place a flag (🪵) on suspected toxic mushrooms.</p>
-    <p>Find all safe mushrooms without revealing any toxic ones to win!</p>
+    <p><strong>Left-click</strong> to reveal a cell.</p>
+    <p><strong>Right-click</strong> to place a flag (🪵) on suspected toxic mushrooms.</p>
+    <p>Reveal all safe mushrooms without clicking a toxic one to win!</p>
   </div>
 
   <main>
@@ -22,14 +67,6 @@
     <div id="game">
       <!-- Grid container where cells will be dynamically generated -->
       <div id="grid"></div>
-      <!-- Game controls and status messages -->
-      <div id="game-info">
-        <button id="reset">Restart Game</button>
-        <div id="message"></div>
-        <!-- Flag counter and timer display -->
-        <div id="flag-counter"></div>
-        <div id="timer"></div>
-      </div>
     </div>
   </main>
 
