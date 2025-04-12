@@ -10,6 +10,9 @@ body {
   header {
     background-color: #a3d5a3; /* Gentle, nature-inspired green */
     padding: 1rem;
+    background-image: linear-gradient(to bottom, #a3d5a3, #8bc34a);
+    color: #2e5627;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
   
   h1 {
@@ -45,12 +48,23 @@ body {
     align-items: center;
     cursor: pointer;
     font-size: 1.2rem;
+    transition: background-color 0.3s, transform 0.2s;
   }
   
   /* Revealed cells lose the background color and pointer indicates disabled click */
   .cell.revealed {
     background-color: #fff;
     cursor: default;
+    animation: reveal 0.3s ease-out;
+  }
+
+  .cell:hover {
+    transform: scale(1.05);
+  }
+
+  @keyframes reveal {
+    0% { transform: scale(0.8); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
   }
   
   /* Flagged cell styling */

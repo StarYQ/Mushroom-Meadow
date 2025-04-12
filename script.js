@@ -13,6 +13,9 @@ let gameOver = false;
 let cellsRevealed = 0;
 let totalSafeCells = gridSize * gridSize - mineCount;  // For win condition
 
+let timer = 0;
+let timerInterval;
+
 // Initialize the game board
 function initGame() {
   board = [];
@@ -58,6 +61,14 @@ function initGame() {
 
   // Render the board in the HTML grid element
   renderBoard();
+
+  timer = 0;
+  clearInterval(timerInterval);
+  document.getElementById('timer').innerText = '0s';
+  timerInterval = setInterval(() => {
+    timer++;
+    document.getElementById('timer').innerText = timer + 's';
+  }, 1000);
 }
 
 // Count adjacent mines (toxic mushrooms) for a given cell
@@ -113,6 +124,7 @@ function handleCellClick(e) {
   // Check for win condition: all safe cells revealed
   if (cellsRevealed === totalSafeCells) {
     gameOver = true;
+    clearInterval(timerInterval);
     document.getElementById('message').innerText = "You foraged safely!";
     revealAllMines();
   }
@@ -145,6 +157,7 @@ function revealCell(row, col) {
   // If the player clicked a toxic mushroom, the game is over!
   if (cell.mine) {
     gameOver = true;
+    clearInterval(timerInterval);
     document.getElementById('message').innerText = "You stepped on a poison cap! Game Over!";
     revealAllMines();
     return;
